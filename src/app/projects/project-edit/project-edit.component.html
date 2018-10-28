@@ -1,0 +1,115 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup] = "projectForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button 
+            type="submit" 
+            class="btn btn-success"
+            [disabled]="!projectForm.valid">Save</button>
+          <button 
+            type="button" 
+            class="btn btn-danger"
+            (click) = "onCancel()">Cancel</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+              type="text" 
+              id="name"
+              formControlName = "name" 
+              class = "form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input 
+              type="text" 
+              id="imagePath"
+              formControlName = "imagePath" 
+              class = "form-control"
+              #imagePath>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src] ="imagePath.value" class = "img-responsive">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea 
+              type="text" 
+              id="description" 
+              class = "form-control"
+              formControlName = "description"
+              rows = 6>
+            </textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" formArrayName = "tasks">
+          <div 
+            class="row"
+            *ngFor = "let taskCtrl of projectForm.get('tasks').controls; let i = index"
+            [formGroupName] = "i"
+            style = "margin-top: 5px;">
+
+            <!-- Task Name -->
+            <div class="col-xs-3">
+                <input 
+                  type="text" 
+                  class = "form-control"
+                  formControlName = "name">
+            </div>
+            <!-- Task Description -->
+            <div class="col-xs-5">
+                <input 
+                  type="text" 
+                  class = "form-control"
+                  formControlName = "description">
+            </div>
+            <!-- Delete task button -->
+            <div class="col-xs-2">
+                <button 
+                  class="btn btn-danger"
+                  type="button"
+                  (click) = "onDeleteTask(i)">X</button>
+            </div>
+
+          </div>
+
+          <hr>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <button
+                type = "button" 
+                class = "btn btn-success" 
+                (click)="onAddTask()">Add Task
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</div>

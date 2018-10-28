@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-xs-10">
+    <app-todo-edit></app-todo-edit>
+    <hr>
+    
+    <ul class="list-group">
+      <a 
+        class = "list-group-item" 
+        style="cursor:pointer"
+        *ngFor="let task of tasks; let i = index" 
+        (click) = "onEditItem(i)">
+        {{task.name}}:
+        {{task.description}}
+      </a>
+    </ul>
+
+  </div>
+</div>

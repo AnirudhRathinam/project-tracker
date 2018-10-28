@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12">
+    <img 
+      [src] = "project.imagePath" 
+      alt = "{{project.name}}" 
+      class="img-responsive"
+      style="max-height: 200px">
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+      <h1>{{project.name}}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group" appDropdown>
+        <button 
+          type="button" 
+          class="btn btn-primary dropdown-toggle">
+            Manage Project <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a (click)="onAddToTaskList()" style="cursor:pointer;">Add to Task List</a></li>
+          <li><a style="cursor:pointer;" (click)="onEditProject()" >Edit Project</a></li>
+          <li><a style="cursor:pointer;" (click) = "onDeleteProject()">Delete Project</a></li>
+        </ul>
+      </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12">
+    {{project.description}}
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li 
+          class="list-group-item"
+          *ngFor="let task of project.tasks">
+            {{task.name}}: {{task.description}}
+        </li>
+      </ul>
+    </div>
+</div>
