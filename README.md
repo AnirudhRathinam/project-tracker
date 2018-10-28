@@ -2,7 +2,7 @@
 - Angular SPA to manage projects. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 - Screenshot:
 
-![screenshot](https://i.imgur.com/v6QTxk4.png)
+![screenshot](https://i.imgur.com/2h2SXFq.png)
 
 ## Development server
 
